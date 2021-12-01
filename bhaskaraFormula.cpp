@@ -3,48 +3,36 @@
 #include <iomanip>
 using namespace std;
 int main(){
-    /* 
-        Bharkara's Formula
-        rumus: 
-        >> -b + sqrt( (b*b) - (4*c) ) / 2*a
-        >> -b - sqrt( (b*b) - (4*c) ) / 2*a
-        note: untuk lebih jelasnya bisa cari di google
-     */
-
-    // variabel untuk inputan
-    double a, b, c;
-
-    // inputan
+    double a, b, c, belum_akar, akar;
     cin >> a >> b >> c;
-
-    // mencari akar
-    double akar = (b*b)-(4*a*c);
-    akar = sqrt(akar);
-    
+    akar = (b*b)-(4*a*c); // belum bentuk akar
     
     /* 
-    kondisi:
-    1. jika hasil akar > 0
-    2. jika nilai a tidak 0
-    tampilkan hasil
+    syarat :
+    1. jika nilai dalam akar bernilai negatif, tampilkan pesan "Impossivel calcular"
+    2. jika a = 0, tampilkan pesan "Impossivel calcular"
      */
-    if( akar > 0 && a != 0 ){ // jika hasil akar > 0 dan nilai a tidak 0
-        double x, y; // variabel untuk menyimpan hasil
-        // penyelesaian
-        // (-b + akar/2*a) & (-b - akar/2*a)
-        x = (-b+akar)/(2*a);
-        y = (-b-akar)/(2*a);
 
-        // digunakan untuk menampilkan 5 digit angka di belakang koma
-        // setprecision(); adalah standard library dari #include <iomanip>
-        cout << fixed << setprecision(5);
+    if( akar > 0 && a != 0 ){
+        // mencari hasil akar
+        akar = sqrt(akar);
+        double x, y;
+
+        // penyelesaian rumus
+        x = (-b + akar)/(2*a);
+        y = (-b - akar)/(2*a);
 
         // menampilkan hasil
+        cout << fixed << setprecision(5);
         cout << "R1 = " << x << endl;
-        cout << "R1 = " << y << endl;
-    } else { // jika hasil akar < 0 dan nilai a = 0
+        cout << "R2 = " << y << endl;
+
+
+    } else { // jika nilai a = 0 atau hasil dari nilai akar negatif
         cout << "Impossivel calcular" << endl;
     }
+
+
 
     return 0;
 }
