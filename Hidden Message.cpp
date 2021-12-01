@@ -1,35 +1,36 @@
-#include <iostream>
 #include <stdio.h>
-using namespace std;
-int main(){
-    int panjang, k, l;
-    char kalimat[55], kata[55];
+#include <iostream>
 
-    cin >> panjang;
-    cin.getline( kalimat, 0 );
-    for( int i = 0; i < panjang; i++ ){
-        cin.getline( kalimat, 100 );
-        k = 0;
-        l = 0;
-        for( int j = 0; j < 50; j++ ){
-            if( kalimat[j] == '\0' || k == 1 ){
-                break;
-            }
-            if( kalimat[j] >97 ){
-                kata[l] = kalimat[j];
-                l++;
-                while( kalimat[j] != 32 ){
+int main(){
+
+    int n, fim, cont;
+    char texto[51];
+    char saida[51];
+
+    scanf("%d",&n);
+    std::cin.getline(texto,0);
+    for(int i = 0; i < n; i++){
+        std::cin.getline(texto,51);
+        fim = 0;
+        cont = 0;
+        for(int j = 0; j < 50; j++){
+            if(texto[j] == '\0' || fim == 1) break;
+            if(texto[j] >= 97){
+                //printf("%c",texto[j]);
+                saida[cont] = texto[j];
+                cont++;
+                while(texto[j] != 32){ 
                     j++;
-                    if( kalimat[j] == '\0' ){
-                        k = 1;
-                        break;
+                    if(texto[j] == '\0'){
+                     fim = 1;
+                     break;
                     }
                 }
             }
-        }
-        kata[l] = '\0';
-        cout << kata << endl;
+         }
+         saida[cont] = '\0';
+         printf("%s\n", saida);
     }
-
+    
     return 0;
 }
